@@ -835,6 +835,23 @@ export class WebviewUIHandler {
             hybridChat
         })
 
+        // Global click handler for external links - send to IDE to open in system browser
+        document.addEventListener('click', (e) => {
+            const target = e.target as HTMLElement
+            const anchor = target.closest('a')
+            if (anchor) {
+                const href = anchor.getAttribute('href')
+                if (href && (href.startsWith('http://') || href.startsWith('https://'))) {
+                    e.preventDefault()
+                    e.stopPropagation()
+                    this.postMessage.postMessage({
+                        command: 'open-external-link',
+                        link: href
+                    })
+                }
+            }
+        }, true)
+
     }
     get mynahUI(): MynahUI | undefined {
         return this.mynahUIRef.mynahUI

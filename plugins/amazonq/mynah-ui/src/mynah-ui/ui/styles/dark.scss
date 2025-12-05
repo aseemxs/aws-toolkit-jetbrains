@@ -4,3 +4,13 @@ body.vscode-high-contrast:not(.vscode-high-contrast-light) {
     --mynah-color-highlight: rgba(0, 137, 255, 0.2);
     --mynah-color-highlight-text: rgba(0, 137, 255, 1);
 }
+
+/* Fix link styling */
+a, a[href] {
+    cursor: pointer !important;
+    color: #3794ff !important;
+}
+
+a:hover, a[href]:hover {
+    text-decoration: underline !important;
+}

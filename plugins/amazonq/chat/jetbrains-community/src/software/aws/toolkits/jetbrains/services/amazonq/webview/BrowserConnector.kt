@@ -155,6 +155,9 @@ class BrowserConnector(
                     "open-user-guide" -> {
                         BrowserUtil.browse(node.get("userGuideLink").asText())
                     }
+                    "open-external-link" -> {
+                        node.get("link")?.asText()?.let { BrowserUtil.browse(it) }
+                    }
                     "send-telemetry" -> {
                         val source = node.get("source")
                         val module = node.get("module")

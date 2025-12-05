@@ -258,6 +258,10 @@ class Browser(parent: Disposable, private val mynahAsset: Path, val project: Pro
                         will-change: transform !important;
                         transform: translateZ(0) !important;
                     }
+                    a, a.mynah-ui-clickable-item {
+                        cursor: pointer !important;
+                        color: #3794ff !important;
+                    }
                 </style>
             <html lang="en">
                 <head>
@@ -268,6 +272,11 @@ class Browser(parent: Disposable, private val mynahAsset: Path, val project: Pro
                     <div style="text-align: center;">Amazon Q is loading...</div>
                     <script type="text/javascript">
                         ${ThemeBrowserAdapter().buildJsCodeToUpdateTheme(EditorThemeAdapter.getThemeFromIde())}
+                        
+                        // Fix link styles
+                        const linkStyle = document.createElement('style');
+                        linkStyle.textContent = 'a, a.mynah-ui-clickable-item { cursor: pointer !important; color: #3794ff !important; } a:hover { text-decoration: underline !important; }';
+                        document.head.appendChild(linkStyle);
                     </script>
                 </body>
             </html>
